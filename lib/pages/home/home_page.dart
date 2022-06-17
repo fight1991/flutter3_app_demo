@@ -5,13 +5,15 @@ import 'home_main_page.dart';
 import 'home_mine_page.dart';
 
 class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
+
   @override
-  _HomePage createState() => _HomePage();
+  State<HomePage> createState() => _HomePage();
 }
 
 class _HomePage extends State<HomePage> {
   int _currentIndex = 0;
-  PageController _pageController = PageController();
+  final PageController _pageController = PageController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,7 +24,10 @@ class _HomePage extends State<HomePage> {
           controller: _pageController,
           // 不可左右滑动
           physics: NeverScrollableScrollPhysics(),
-          children: [MainPage(), MinePage()],
+          children: const [
+            MainPage(),
+            MinePage(),
+          ],
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -39,7 +44,7 @@ class _HomePage extends State<HomePage> {
         selectedItemColor: Theme.of(context).accentColor,
         // 未选中的颜色
         unselectedItemColor: Colors.black54,
-        items: [
+        items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: '首页'),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: '我的'),
         ],

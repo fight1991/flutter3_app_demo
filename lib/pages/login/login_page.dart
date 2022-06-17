@@ -40,86 +40,42 @@ class _LoginPage extends State<LoginPage> {
         ),
         body: SingleChildScrollView(
           child: Container(
+            padding: EdgeInsets.only(top: 80, left: 30, right: 30, bottom: 20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
-              children: [buildFormContainer(), buildSubmitBtn()],
+              children: [
+                buildFormContainer(),
+                buildSubmitBtn(),
+              ],
             ),
           ),
         ));
   }
 
   Widget buildFormContainer() {
-    return Container(
-      padding: EdgeInsets.only(left: 20, top: 100, right: 20, bottom: 20),
-      child: Stack(
-        clipBehavior: Clip.none,
-        alignment: Alignment.topCenter,
-        children: [
-          Container(
-            padding: EdgeInsets.only(top: 80, left: 20, right: 20, bottom: 20),
-            decoration: BoxDecoration(
-                color: Colors.white, borderRadius: BorderRadius.circular(10)),
-            child: Column(
-              children: [
-                //手机号
-                TextField(
-                  controller: _userNameEditController,
-                  focusNode: _userNameFocusNode,
-                  decoration: InputDecoration(hintText: '手机号'),
-                ),
-                SizedBox(
-                  height: 15,
-                ),
-                //手机号
-                Row(
-                  children: [
-                    Expanded(
-                        child: TextField(
-                      controller: _codeEditController,
-                      focusNode: _codeFocusNode,
-                      decoration: InputDecoration(
-                        suffixIcon: InkWell(
-                            onTap: () {
-                              LogUtils.e('获取验证码');
-                              // 发送验证码成功后开启倒计时
-                              if (_timer != null) {
-                                return;
-                              }
-                              LogUtils.e('进来了额');
-
-                              // 倒计时开始
-                              startTimerDown();
-                            },
-                            child: Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  Text(
-                                    codeText,
-                                    style: TextStyle(
-                                        color: Theme.of(context).accentColor),
-                                  ),
-                                ])),
-                        hintText: '验证码',
-                      ),
-                    )),
-                    // TextButton(onPressed: () {}, child: Text('获取验证码'))
-                  ],
-                )
-              ],
-            ),
+    return Column(
+      children: [
+        TextField(
+          controller: _userNameEditController,
+          focusNode: _userNameFocusNode,
+          decoration: InputDecoration(
+            labelText: "用户名",
+            hintText: "用户名或邮箱",
+            prefixIcon: Icon(Icons.person),
           ),
-          Positioned(
-            top: -45,
-            child: Image.asset(
-              "lib/assets/images/user_static_logo.png",
-              width: 90,
-              height: 90,
-            ),
+        ),
+        SizedBox(height: 15),
+        TextField(
+          controller: _codeEditController,
+          focusNode: _codeFocusNode,
+          decoration: InputDecoration(
+            labelText: "密码",
+            hintText: "您的登录密码",
+            prefixIcon: Icon(Icons.lock),
           ),
-        ],
-      ),
+          obscureText: true,
+        ),
+      ],
     );
   }
 
@@ -137,7 +93,7 @@ class _LoginPage extends State<LoginPage> {
       },
       child: Container(
         height: 40,
-        margin: EdgeInsets.only(top: 50, left: 40, right: 40, bottom: 30),
+        margin: EdgeInsets.only(top: 50, left: 30, right: 30, bottom: 30),
         alignment: Alignment.center,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(6),
@@ -177,11 +133,11 @@ class _LoginPage extends State<LoginPage> {
     String mobile = _userNameEditController.text;
     String code = _codeEditController.text;
     if (mobile.trim().isEmpty) {
-      ToastUtils.showToast('手机号不能为空');
+      ToastUtils.showToast('账号不能为空');
       return false;
     }
     if (code.trim().isEmpty) {
-      ToastUtils.showToast('验证码不能为空');
+      ToastUtils.showToast('密码不能为空');
       return false;
     }
     return true;
