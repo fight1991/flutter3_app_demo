@@ -13,16 +13,7 @@ class _MainPage extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: const [
-            Icon(IconFont.icon_position),
-            SizedBox(width: 5),
-            Text('恒大财富中心'),
-          ],
-        ),
-      ),
+      appBar: AppBar(centerTitle: true, title: Text('首页')),
       body: Container(
         padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
         child: ListView(

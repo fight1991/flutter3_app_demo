@@ -7,8 +7,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class MinePage extends StatefulWidget {
+  const MinePage({Key? key}) : super(key: key);
   @override
-  _MinePage createState() => _MinePage();
+  State<MinePage> createState() => _MinePage();
 }
 
 class _MinePage extends State<MinePage> {
@@ -95,7 +96,7 @@ class _MinePage extends State<MinePage> {
           // 裁剪成圆形
           ClipOval(
             child: Image.asset(
-              'assets/images/user_static_logo.png',
+              'lib/assets/images/user_static_logo.png',
               height: 80,
               width: 80,
               fit: BoxFit.fill,
