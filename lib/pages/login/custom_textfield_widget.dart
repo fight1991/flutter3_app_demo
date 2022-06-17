@@ -22,7 +22,7 @@ class TextFieldWidget extends StatelessWidget {
   final Function(String value)? submit;
   final Function()? onTap;
 
-  TextFieldWidget({
+  const TextFieldWidget({
     Key? key,
     this.hintText,
     this.submit,

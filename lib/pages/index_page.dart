@@ -3,8 +3,10 @@ import 'package:app_demo/utils/navigator_utils.dart';
 import 'package:flutter/material.dart';
 
 class IndexPage extends StatefulWidget {
+  const IndexPage({Key? key}) : super(key: key);
+
   @override
-  _IndexPage createState() => _IndexPage();
+  State<IndexPage> createState() => _IndexPage();
 }
 
 // 在此页面可以进行
