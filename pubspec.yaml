@@ -39,6 +39,7 @@ dependencies:
   #toast 消息提示小弹框
   fluttertoast: ^8.0.8
   shared_preferences: ^2.0.6
+  flutter_swiper_null_safety: ^1.0.2
 dev_dependencies:
   flutter_test:
     sdk: flutter
