@@ -10,7 +10,8 @@ class _RootAPPState extends State<RootAPP> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(scaffoldBackgroundColor: Color(0xFFf5f9fc)),
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(scaffoldBackgroundColor: Color(0xfff5f5f5)),
       home: IndexPage(),
     );
   }

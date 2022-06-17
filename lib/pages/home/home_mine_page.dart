@@ -91,7 +91,7 @@ class _MinePage extends State<MinePage> {
       margin: EdgeInsets.only(bottom: 20),
       decoration: BoxDecoration(color: Colors.white),
       child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           // 裁剪成圆形
           ClipOval(
@@ -110,31 +110,14 @@ class _MinePage extends State<MinePage> {
   }
 
   Widget buildStatusBox() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+    return Row(
       children: [
-        Text(
-          '聪',
-          style: TextStyle(
-            color: Colors.black,
-            fontWeight: FontWeight.bold,
-            fontSize: 24,
-          ),
+        SizedBox(
+          width: 10,
         ),
-        Row(
-          children: [
-            Text(
-              '已实名',
-              style: TextStyle(color: Theme.of(context).accentColor),
-            ),
-            SizedBox(
-              width: 10,
-            ),
-            Text(
-              '电子车牌',
-              style: TextStyle(color: Theme.of(context).accentColor),
-            ),
-          ],
+        Text(
+          '陈世美',
+          style: TextStyle(color: Theme.of(context).accentColor),
         ),
       ],
     );
