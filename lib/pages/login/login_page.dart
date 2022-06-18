@@ -8,8 +8,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
+  const LoginPage({Key? key}) : super(key: key);
+
   @override
-  _LoginPage createState() => _LoginPage();
+  State<LoginPage> createState() => _LoginPage();
 }
 
 class _LoginPage extends State<LoginPage> {
@@ -55,6 +57,7 @@ class _LoginPage extends State<LoginPage> {
   Widget buildFormContainer() {
     return Column(
       children: [
+        Theme(data: ThemeData(accentColor: Colors.red), child: TextField()),
         TextField(
           controller: _userNameEditController,
           focusNode: _userNameFocusNode,
@@ -97,7 +100,7 @@ class _LoginPage extends State<LoginPage> {
         alignment: Alignment.center,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(6),
-            color: Theme.of(context).colorScheme.secondary),
+            color: Theme.of(context).accentColor),
         child: Text(
           '登录',
           style: TextStyle(color: Colors.white),

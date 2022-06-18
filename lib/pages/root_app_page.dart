@@ -9,16 +9,20 @@ class RootAPP extends StatefulWidget {
 }
 
 class _RootAPPState extends State<RootAPP> {
+  Color? themeColor = Colors.amber[800];
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        appBarTheme: AppBarTheme(color: Colors.amber),
-        scaffoldBackgroundColor: Color(0xfff5f5f5),
-        accentColor: Colors.amber,
-        // colorScheme: ColorScheme.fromSwatch().copyWith(secondary: Colors.amber),
-      ),
+          appBarTheme: AppBarTheme(color: themeColor),
+          scaffoldBackgroundColor: Color(0xfff5f5f5),
+          accentColor: themeColor,
+          inputDecorationTheme: InputDecorationTheme(
+            labelStyle: TextStyle(
+              color: themeColor,
+            ), //定义label字体样式
+          )),
       home: IndexPage(),
     );
   }
