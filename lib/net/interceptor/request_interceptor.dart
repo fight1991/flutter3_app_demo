@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_car_live/common/global.dart';
-import 'package:flutter_car_live/utils/log_utils.dart';
-import 'package:flutter_car_live/utils/toast_utils.dart';
+import 'package:app_demo/common/global.dart';
+import 'package:app_demo/utils/log_utils.dart';
+import 'package:app_demo/utils/toast_utils.dart';
 
 /*
  * 页面说明：dio 拦截
