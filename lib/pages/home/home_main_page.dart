@@ -16,7 +16,7 @@ class _MainPage extends State<MainPage> {
     return Scaffold(
       appBar: AppBar(centerTitle: true, title: Text('首页')),
       body: Container(
-        padding: EdgeInsets.symmetric(horizontal: 0, vertical: 10),
+        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
         child: ListView.builder(
           itemCount: 10,
           itemBuilder: (BuildContext context, int index) {
@@ -27,6 +27,7 @@ class _MainPage extends State<MainPage> {
               ),
               title: Text('你好'),
               subtitle: Text('$index'),
+              shape: Border(bottom: BorderSide(color: Colors.black12)),
             );
           },
         ),

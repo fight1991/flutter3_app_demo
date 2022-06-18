@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'index_page.dart';
 
 class RootAPP extends StatefulWidget {
+  const RootAPP({Key? key}) : super(key: key);
+
   @override
   State<StatefulWidget> createState() => _RootAPPState();
 }
