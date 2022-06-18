@@ -39,6 +39,7 @@ class _LoginPage extends State<LoginPage> {
     return Scaffold(
         appBar: AppBar(
           title: Text('登录'),
+          elevation: 0,
         ),
         body: SingleChildScrollView(
           child: Container(
@@ -57,7 +58,6 @@ class _LoginPage extends State<LoginPage> {
   Widget buildFormContainer() {
     return Column(
       children: [
-        Theme(data: ThemeData(accentColor: Colors.red), child: TextField()),
         TextField(
           controller: _userNameEditController,
           focusNode: _userNameFocusNode,
