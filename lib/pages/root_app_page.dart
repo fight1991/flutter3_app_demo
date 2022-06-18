@@ -13,7 +13,12 @@ class _RootAPPState extends State<RootAPP> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(scaffoldBackgroundColor: Color(0xfff5f5f5)),
+      theme: ThemeData(
+        appBarTheme: AppBarTheme(color: Colors.amber),
+        scaffoldBackgroundColor: Color(0xfff5f5f5),
+        accentColor: Colors.amber,
+        // colorScheme: ColorScheme.fromSwatch().copyWith(secondary: Colors.amber),
+      ),
       home: IndexPage(),
     );
   }
