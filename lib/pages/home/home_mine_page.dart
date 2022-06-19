@@ -1,10 +1,12 @@
 import 'package:app_demo/pages/login/login_page.dart';
+import 'package:app_demo/providers/user_model.dart';
 import 'package:app_demo/utils/log_utils.dart';
 import 'package:app_demo/utils/navigator_utils.dart';
 import 'package:app_demo/utils/toast_utils.dart';
 import 'package:app_demo/widgets/iconfont/iconfont.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class MinePage extends StatefulWidget {
   const MinePage({Key? key}) : super(key: key);
@@ -115,9 +117,11 @@ class _MinePage extends State<MinePage> {
         SizedBox(
           width: 10,
         ),
-        Text(
-          '陈世美',
-          style: TextStyle(color: Theme.of(context).accentColor),
+        Consumer<UserModel>(
+          builder: (context, state, child) => Text(
+            state.user.sName ?? 'xxx',
+            style: TextStyle(color: Theme.of(context).accentColor),
+          ),
         ),
       ],
     );

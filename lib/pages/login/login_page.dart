@@ -1,11 +1,19 @@
 import 'dart:async';
 
+import 'package:app_demo/bean/bean_user.dart';
+import 'package:app_demo/common/global.dart';
+import 'package:app_demo/models/user.dart';
+import 'package:app_demo/net/fetch_methods.dart';
+import 'package:app_demo/net/http_helper.dart';
+import 'package:app_demo/net/response_data.dart';
 import 'package:app_demo/pages/home/home_page.dart';
+import 'package:app_demo/providers/user_model.dart';
 import 'package:app_demo/utils/log_utils.dart';
 import 'package:app_demo/utils/navigator_utils.dart';
 import 'package:app_demo/utils/toast_utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -22,9 +30,7 @@ class _LoginPage extends State<LoginPage> {
   final FocusNode _userNameFocusNode = FocusNode();
   // 验证码焦点控制
   final FocusNode _codeFocusNode = FocusNode();
-  //手机号输入框控制器
   final TextEditingController _userNameEditController = TextEditingController();
-  //验证码输入框控制器
   final TextEditingController _codeEditController = TextEditingController();
   @override
   void dispose() {
@@ -86,12 +92,17 @@ class _LoginPage extends State<LoginPage> {
     return GestureDetector(
       onTap: () {
         if (textFieldValid()) {
+          String username = _userNameEditController.text;
+          String pw = _codeEditController.text;
+          if (textFieldValid()) {
+            loginApi(username, pw);
+          }
           // 跳转到tab页面
-          NavigatorUtils.pushPageByFade(
-            context: context,
-            targPage: HomePage(),
-            isReplace: true,
-          );
+          // NavigatorUtils.pushPageByFade(
+          //   context: context,
+          //   targPage: HomePage(),
+          //   isReplace: true,
+          // );
         }
       },
       child: Container(
@@ -109,27 +120,34 @@ class _LoginPage extends State<LoginPage> {
     );
   }
 
-  void startTimerDown() {
-    String temp = '';
-    int count = seconds;
-    _timer = Timer.periodic(Duration(milliseconds: 1000), (t) {
-      count--;
+  // 登录api
+  loginApi(String account, String password) async {
+    ResponseInfo responseInfo = await Fetch.post(
+      url: HttpHelper.login,
+      data: {account, password},
+    );
+    if (responseInfo.success) {
+      UserBean useInfo = UserBean.fromJson(responseInfo.data);
+      // 持久化token
+      Global.profile.token = useInfo.sNo;
+      Global.saveProfile();
+      // 获取用户信息
+      getUserInfo(useInfo.sNo);
+    }
+  }
 
-      if (count < 10 && count > 0) {
-        temp = '0${count}s';
-      } else {
-        temp = '${count}s';
-        if (count == -1) {
-          t.cancel();
-          _timer = null; //定时器内部触发销毁
-          count = seconds;
-          temp = '获取验证码';
-        }
+  getUserInfo(String? account) async {
+    if (account == null) return;
+    ResponseInfo responseInfo = await Fetch.post(
+      url: HttpHelper.getUserDetail,
+      data: {account},
+    );
+    if (responseInfo.success) {
+      User useInfo = User.fromJson(responseInfo.data);
+      if (mounted) {
+        Provider.of<UserModel>(context, listen: false).user = useInfo;
       }
-      setState(() {
-        codeText = temp;
-      });
-    });
+    }
   }
 
   bool textFieldValid() {

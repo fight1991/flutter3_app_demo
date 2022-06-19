@@ -1,3 +1,4 @@
+import 'package:app_demo/routes/router_paths.dart';
 import 'package:flutter/material.dart';
 import 'index_page.dart';
 
@@ -24,6 +25,7 @@ class _RootAPPState extends State<RootAPP> {
           ),
         ),
       ),
+      routes: routeMap,
       home: IndexPage(),
     );
   }
