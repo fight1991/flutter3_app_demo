@@ -62,8 +62,8 @@ class _LoginPage extends State<LoginPage> {
           controller: _userNameEditController,
           focusNode: _userNameFocusNode,
           decoration: InputDecoration(
-            labelText: "用户名",
-            hintText: "用户名或邮箱",
+            labelText: "账户",
+            hintText: "您的账户",
             prefixIcon: Icon(Icons.person),
           ),
         ),
