@@ -124,7 +124,10 @@ class _LoginPage extends State<LoginPage> {
   loginApi(String account, String password) async {
     ResponseInfo responseInfo = await Fetch.post(
       url: HttpHelper.login,
-      data: {account, password},
+      data: {
+        'account': account,
+        'password': password,
+      },
     );
     if (responseInfo.success) {
       UserBean useInfo = UserBean.fromJson(responseInfo.data);
@@ -140,12 +143,15 @@ class _LoginPage extends State<LoginPage> {
     if (account == null) return;
     ResponseInfo responseInfo = await Fetch.post(
       url: HttpHelper.getUserDetail,
-      data: {account},
+      data: {
+        'account': account,
+      },
     );
     if (responseInfo.success) {
       User useInfo = User.fromJson(responseInfo.data);
       if (mounted) {
         Provider.of<UserModel>(context, listen: false).user = useInfo;
+        Navigator.of(context).pushReplacementNamed('/main');
       }
     }
   }

@@ -1,3 +1,4 @@
+import 'package:app_demo/common/global.dart';
 import 'package:app_demo/pages/login/login_page.dart';
 import 'package:app_demo/providers/user_model.dart';
 import 'package:app_demo/utils/log_utils.dart';
@@ -212,6 +213,8 @@ class _MinePage extends State<MinePage> {
     if (flag) {
       // 点击确定按钮
       LogUtils.e('确定退出');
+      Global.profile.token = null;
+      Global.saveProfile();
       NavigatorUtils.pushPageByFade(
         context: context,
         targPage: LoginPage(),

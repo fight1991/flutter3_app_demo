@@ -53,13 +53,10 @@ class _IndexPage extends State<IndexPage> {
     //   targPage: HomePage(),
     //   isReplace: true,
     // );
-    // 假设没有登录则跳转到登录页面
-
     if (Global.isLogin) {
-      LogUtils.e('假按揭啊哈哈${Global.profile.token}');
       // 查询用户信息
       ResponseInfo responseInfo = await Fetch.post(
-        url: HttpHelper.login,
+        url: HttpHelper.getUserDetail,
         data: {'account': Global.profile.user?.sNo},
       );
       if (!mounted) return;

@@ -1,5 +1,6 @@
 import 'package:app_demo/routes/router_paths.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'index_page.dart';
 
 class RootAPP extends StatefulWidget {
@@ -27,6 +28,7 @@ class _RootAPPState extends State<RootAPP> {
       ),
       routes: routeMap,
       home: IndexPage(),
+      builder: EasyLoading.init(),
     );
   }
 }
