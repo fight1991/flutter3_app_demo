@@ -26,7 +26,10 @@ class _MainPage extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(centerTitle: true, title: Text('首页')),
+      appBar: AppBar(
+        centerTitle: true,
+        elevation: 0,
+      ),
       body: Container(
         padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
         child: ListView.builder(

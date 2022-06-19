@@ -39,7 +39,7 @@ class _IndexPage extends State<IndexPage> {
       height: double.infinity,
       child: Image.asset(
         'lib/assets/images/defaultImg.png',
-        fit: BoxFit.fill,
+        fit: BoxFit.fitWidth,
       ),
     );
   }
@@ -57,14 +57,15 @@ class _IndexPage extends State<IndexPage> {
       // 查询用户信息
       ResponseInfo responseInfo = await Fetch.post(
         url: HttpHelper.getUserDetail,
-        data: {'account': Global.profile.user?.sNo},
+        data: {'account': Global.profile.token},
       );
       if (!mounted) return;
       if (responseInfo.success) {
         User user = User.fromJson(responseInfo.data);
         Provider.of<UserModel>(context, listen: false).user = user;
-      } else {
         Navigator.of(context).pushReplacementNamed('/main');
+      } else {
+        jumpToPage(LoginPage());
       }
       return;
     }
