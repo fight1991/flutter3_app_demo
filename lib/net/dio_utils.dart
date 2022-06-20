@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:app_demo/common/global.dart';
 import 'package:dio/dio.dart';
 import 'package:app_demo/net/response_data.dart';
 import 'package:app_demo/net/status_code.dart';
@@ -33,7 +34,7 @@ class DioUtils {
     // 添加请求拦截器
     _dio.interceptors.add(RequestInterceptors());
     // 添加日志拦截器；
-    bool inProduction = bool.fromEnvironment("dart.vm.product");
+    bool inProduction = Global.isRelease;
     if (!inProduction) {
       _dio.interceptors.add(LogsInterceptors());
     }

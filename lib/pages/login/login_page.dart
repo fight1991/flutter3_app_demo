@@ -94,15 +94,7 @@ class _LoginPage extends State<LoginPage> {
         if (textFieldValid()) {
           String username = _userNameEditController.text;
           String pw = _codeEditController.text;
-          if (textFieldValid()) {
-            loginApi(username, pw);
-          }
-          // 跳转到tab页面
-          // NavigatorUtils.pushPageByFade(
-          //   context: context,
-          //   targPage: HomePage(),
-          //   isReplace: true,
-          // );
+          loginApi(username, pw);
         }
       },
       child: Container(
