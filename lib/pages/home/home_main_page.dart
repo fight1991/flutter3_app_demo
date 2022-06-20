@@ -3,6 +3,7 @@ import 'package:app_demo/models/user.dart';
 import 'package:app_demo/net/fetch_methods.dart';
 import 'package:app_demo/net/http_helper.dart';
 import 'package:app_demo/net/response_data.dart';
+import 'package:app_demo/pages/subPages/staff/staff_detail.dart';
 import 'package:app_demo/utils/log_utils.dart';
 import 'package:app_demo/utils/navigator_utils.dart';
 import 'package:app_demo/widgets/iconfont/iconfont.dart';
@@ -38,6 +39,12 @@ class _MainPage extends State<MainPage> {
             var tempUser = listData[index];
             UserBean user = UserBean.fromJson(tempUser);
             return ListTile(
+              onTap: () {
+                NavigatorUtils.pushPageByFade(
+                  context: context,
+                  targPage: StaffDetail(sNo: user.sNo),
+                );
+              },
               leading: CircleAvatar(
                 backgroundColor: Colors.amber,
                 backgroundImage: AssetImage('lib/assets/images/defaultImg.png'),
