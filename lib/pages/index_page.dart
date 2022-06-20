@@ -37,9 +37,13 @@ class _IndexPage extends State<IndexPage> {
     return SizedBox(
       width: double.infinity,
       height: double.infinity,
-      child: Image.asset(
-        'lib/assets/images/defaultImg.png',
-        fit: BoxFit.fitWidth,
+      child: Center(
+        child: Image(
+          width: 100,
+          image: AssetImage(
+            'lib/assets/images/defaultImg.png',
+          ),
+        ),
       ),
     );
   }
