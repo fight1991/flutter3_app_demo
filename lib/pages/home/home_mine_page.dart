@@ -7,6 +7,7 @@ import 'package:app_demo/utils/toast_utils.dart';
 import 'package:app_demo/widgets/iconfont/iconfont.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
 class MinePage extends StatefulWidget {
@@ -76,13 +77,22 @@ class _MinePage extends State<MinePage> {
   ];
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 10),
-      child: ListView(
-        children: [
-          buildHeadUser(),
-          buildListView(),
-        ],
+    return Scaffold(
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(30),
+        child: AppBar(
+          elevation: 0,
+          systemOverlayStyle: SystemUiOverlayStyle.light,
+        ),
+      ),
+      body: Container(
+        padding: EdgeInsets.symmetric(horizontal: 0),
+        child: ListView(
+          children: [
+            buildHeadUser(),
+            buildListView(),
+          ],
+        ),
       ),
     );
   }
@@ -90,9 +100,9 @@ class _MinePage extends State<MinePage> {
   // 用户状态
   Widget buildHeadUser() {
     return Container(
-      padding: EdgeInsets.only(top: 30, bottom: 20, left: 10, right: 10),
+      padding: EdgeInsets.only(top: 0, bottom: 20, left: 10, right: 10),
       margin: EdgeInsets.only(bottom: 20),
-      decoration: BoxDecoration(color: Colors.white),
+      decoration: BoxDecoration(color: Colors.amber[800]),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
@@ -121,7 +131,8 @@ class _MinePage extends State<MinePage> {
         Consumer<UserModel>(
           builder: (context, state, child) => Text(
             state.user.sName ?? 'xxx',
-            style: TextStyle(color: Theme.of(context).accentColor),
+            style: TextStyle(
+                color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
           ),
         ),
       ],
@@ -131,7 +142,7 @@ class _MinePage extends State<MinePage> {
   // listTilte列表
   Widget buildListView() {
     return Container(
-      // padding: EdgeInsets.symmetric(horizontal: 8),
+      padding: EdgeInsets.symmetric(horizontal: 10),
       child: ListView.builder(
         shrinkWrap: true, //范围内进行包裹（内容多高ListView就多高）
         physics: NeverScrollableScrollPhysics(), //禁止滚动
