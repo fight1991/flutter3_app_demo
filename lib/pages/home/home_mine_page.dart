@@ -109,7 +109,7 @@ class _MinePage extends State<MinePage> {
           // 裁剪成圆形
           ClipOval(
             child: Image.asset(
-              'lib/assets/images/user_static_logo.png',
+              'assets/images/user_static_logo.png',
               height: 80,
               width: 80,
               fit: BoxFit.fill,

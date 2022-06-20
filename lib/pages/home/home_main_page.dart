@@ -47,7 +47,7 @@ class _MainPage extends State<MainPage> {
               },
               leading: CircleAvatar(
                 backgroundColor: Colors.amber,
-                backgroundImage: AssetImage('lib/assets/images/defaultImg.png'),
+                backgroundImage: AssetImage('assets/images/defaultImg.png'),
               ),
               title: Text('${user.sName}'),
               subtitle: Text('${user.sNum}'),

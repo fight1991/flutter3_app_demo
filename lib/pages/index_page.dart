@@ -41,7 +41,7 @@ class _IndexPage extends State<IndexPage> {
         child: Image(
           width: 100,
           image: AssetImage(
-            'lib/assets/images/defaultImg.png',
+            'assets/images/defaultImg.png',
           ),
         ),
       ),
