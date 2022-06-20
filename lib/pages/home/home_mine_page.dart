@@ -225,6 +225,7 @@ class _MinePage extends State<MinePage> {
       // 点击确定按钮
       LogUtils.e('确定退出');
       Global.profile.token = null;
+      Global.profile.user = null;
       Global.saveProfile();
       NavigatorUtils.pushPageByFade(
         context: context,
