@@ -117,9 +117,9 @@ class DioUtils {
 
   Future<BaseOptions> buildOptions(BaseOptions options) async {
     //获取当前App的版本信息
-    PackageInfo packageInfo = await PackageInfo.fromPlatform();
-    String version = packageInfo.version;
-    options.headers["appVersion"] = version;
+    // PackageInfo packageInfo = await PackageInfo.fromPlatform();
+    // String version = packageInfo.version;
+    // options.headers["appVersion"] = version;
     //请求时间
     options.connectTimeout = 20000;
     options.receiveTimeout = 15 * 1000;
