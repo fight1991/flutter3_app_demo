@@ -7,7 +7,7 @@ class RootAPP extends StatefulWidget {
   const RootAPP({Key? key}) : super(key: key);
 
   @override
-  State<StatefulWidget> createState() => _RootAPPState();
+  State<RootAPP> createState() => _RootAPPState();
 }
 
 class _RootAPPState extends State<RootAPP> {
