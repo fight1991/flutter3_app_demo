@@ -8,11 +8,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 class Global {
   static SharedPreferences? _prefs;
   static Profile profile = Profile();
-  static String? _deviceId; // 手持机设备号;
   // 网络缓存对象
   // static NetCache netCache = NetCache();
-  // 获取设备号
-  static String? get deviceId => _deviceId;
   // 是否为release版
   // static bool get isRelease => bool.fromEnvironment("dart.vm.product");
   // 兼容chrome
@@ -35,11 +32,6 @@ class Global {
   //   ..enable = true
   //   ..maxAge = 3600
   //   ..maxCount = 100;
-
-  // 保存设备号信息
-  static saveDeviceId(id) {
-    _deviceId = id;
-  }
 
   // 持久化Profile信息
   static saveProfile() =>
